@@ -5,10 +5,10 @@ import sys
 
 color_codes = {True: 34, False: 31}
 
-def run(input_file):
+def run(tsv_file):
   i = 0
 
-  with open(input_file) as f:
+  with open(tsv_file) as f:
     line = f.readline()
     parts = line.split('\t')
     num_fields = len(parts) - 1
@@ -34,7 +34,7 @@ def print_with_color(parts, row_num, valid):
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
-  parser.add_argument('input_file')
+  parser.add_argument('tsv_file')
   args = parser.parse_args()
-  run(args.input_file)
+  run(args.tsv_file)
 
