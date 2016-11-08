@@ -7,11 +7,14 @@ color_codes = {True: 34, False: 31}
 
 def run(tsv_file, skip_lines):
   i = 0
+  valid = True 
 
   with open(tsv_file) as f:
-    while i < skip_lines:
-      f.readline()
+    while i < skip_lines - 1:
+      line = f.readline()
       i += 1
+      if len(line) == 0:
+        break;
 
     line = f.readline()
     parts = line.split('\t')
@@ -39,7 +42,7 @@ def print_with_color(parts, row_num, valid):
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
   parser.add_argument('tsv_file', help = 'Tsv file to check')
-  parser.add_argument('-s', type = int, default = 0, help = 'Skip this many lines before validating')
+  parser.add_argument('-s', type = int, default = 0, help = 'Start at this line (ignore previous lines)')
   args = parser.parse_args()
   run(args.tsv_file, args.s)
 
