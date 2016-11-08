@@ -26,8 +26,10 @@ def run(tsv_file, skip_lines):
     for line in f:
       parts = line.split('\t')
       num_fields = len(parts) - 1
-      valid = num_fields == num_fields_0
-      print_with_color(parts, i, valid)
+      line_valid = num_fields == num_fields_0
+      print_with_color(parts, i, line_valid)
+      if not line_valid:
+        valid = False
       i += 1
 
   if valid:
