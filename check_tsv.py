@@ -39,7 +39,7 @@ def run(tsv_file, skip_lines):
     sys.exit(1)
 
 def print_with_color(parts, row_num, valid):
-  print('{0}: '.format(row_num + 1) + '\033[{0}m[tab]\033[0m'.format(color_codes[valid]).join(parts).replace('\n', ''))
+  print('\033[{0}m{1}\033[0m: '.format(color_codes[valid], row_num + 1) + '\033[{0}m[tab]\033[0m'.format(color_codes[valid]).join(parts).replace('\n', ''))
 
 if __name__ == '__main__':
   parser = argparse.ArgumentParser()
